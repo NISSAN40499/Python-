@@ -1,0 +1,217 @@
+### Expense Calculation in Python 
+```
+expense_sergey = [100,200,300,400,500]
+expense_sundar = [110,210,310,410,510]
+
+def total_expense(expenses):
+    total = 0
+    for i in expenses:
+        total +=i
+    return total
+
+sergeys_expense = total_expense(expense_sergey)
+print(f"Sergeys Expense is : {sergeys_expense}")
+sundars_expense = total_expense(expense_sundar)
+print(f"Sundars Expense is: {sundars_expense}")
+```
+
+### Find cylender volume
+```
+def cylender_vol(radius, height = 7):
+    print(f"Radius: {radius}")
+    print(f"Height: {height}")
+    volume = 3.14 * (radius ** 2) * height
+    return volume
+
+h = float(input("Enter the height: "))
+r = float(input("Enter the radius: "))
+
+volume = cylender_vol(r, h)
+print(f"The volume is: {volume}")
+```
+
+### Find the Area of a Circle in Python:
+```
+from math import pi
+def circle_area(r):
+    area = pi*r**2
+    return area
+radious = float(input("Enter a Radious:"))
+area_result = circle_area(radious)
+print(f"The area of the circle is: {area_result}")
+```
+
+### Sum of multiple input numbers:
+```
+def n_sum(*args):
+    summation = sum(args)
+    return summation
+values = list(map(int, input("Enter numbers with spaces:").split()))
+summation = n_sum(*values)
+print(f"The sum is: {summation}")
+```
+
+### Find the avg of n numbers:
+```
+def n_num(*args): # takes n number of values
+    summation = sum(args) 
+    return summation/len(args)
+
+values = list(map(int, input("Enter numbers by space:").split()))
+avg = n_num(*values)
+print(f"The average of those numbers is: {avg}")
+```
+
+### Sum the first n positive integers:
+```
+def n_sum(*args):
+    total = 0
+    for i in args:
+        if i > 0:
+            total +=i
+    return total
+
+values = list(map(int, input("Enter space seperated numbers: ").split()))
+summation = n_sum(*values)
+print(f"The sum of first n positive integer is: {summation}")            
+```
+
+### How to get the execution time of the program:
+```
+import time
+def timer (num):
+    start_time = time.time()
+    mul = 0
+    for i in range(num):
+        mul *= i
+        big_num = mul*10000000
+        end_time = time.time()
+    return start_time - end_time
+
+value = int(input("Enter a huge number: "))
+
+ans = timer(value)
+print(f"This program took around:  {ans}")
+```
+
+### Get the username in Python:
+```
+import getpass
+print(getpass.getuser())
+```
+
+### Get the current datetime in Python:
+```
+import datetime
+print(datetime.datetime.now())
+```
+
+### How to Reverse a string in Python:
+```
+def Rev_str (text):
+    text = text[::-1]
+    return text
+text = str(input("Enter a text:"))
+result = Rev_str(text)
+print(result)
+```
+
+### How to create a list and tuple with comma separated numbers in Python that also filters garbage data:
+```
+def listuple(args):
+    args = args.replace(" ", ",")
+    lists = args.split(",")
+    clean_exp = []
+    for item in lists:
+        item = item.strip()
+        if item.isdigit():
+            clean_exp.append(int(item))
+    return clean_exp, tuple(clean_exp)
+
+values = input("Enter numbers: ")
+lst, tup = listuple(values)
+print(f"This is the list : {lst}")
+print(f"This is the tuple: {tup}")
+```
+
+### Creating an expense tracker in python:
+```
+def exptrac(expense):
+    expense = expense.replace(" ", ",")
+    expense = expense.split(",")
+    clean_exp =[]
+    for item in expense:
+        item = item.strip()
+        if item.isdigit():
+            clean_exp.append(item)
+            
+    total = 0      
+    for i in range(len(clean_exp)):
+        exp = clean_exp[i]
+        exp = int(exp)
+        total += exp
+        print(f"For month {i+1} expense is: {exp}")
+    return total
+expense = input("Enter expenses with commas:")
+result = exptrac(expense)
+print(result)
+```
+
+### Player score aggregator program:
+```
+score_list = {}
+with open("E:\\Score.txt", "r") as f:
+    for i in f:
+        player , score = i.split(",")
+        score = int(score.strip())
+        if player in score_list:
+            score_list[player].append(score)
+        else:
+            score_list[player] = [score]
+        
+for player,score in score_list.items():
+    min_score = min(score)
+    max_score = max(score)
+    avg_score = sum(score)/len(score)
+    total = sum(score)
+    print(f"player: {player}, min score: {min_score}, max score: {max_score}, avg_score: {avg_score} & total: {total}")
+
+top_player = None
+highest_runs = 0
+for player, score in score_list.items():
+    total = sum(score)
+    if total>highest_runs:
+        highest_runs = total
+        top_player = player
+print(f"Top scores overall: Name: {top_player}, total runs: {highest_runs}")
+```
+
+### Same code Optimized
+```
+score_list = {}
+with open ("E:\\Score.txt", "r") as f:
+    for i in f:
+        player, score = i.split(",")
+        score = int(score.strip())
+        if player in score_list:
+            score_list[player].append(score)
+        else:
+            score_list[player]=[score]
+
+top_player = None
+highest_score = 0
+for player, score in score_list.items():
+
+    min_score = min(score)
+    max_score = max(score)
+    avg_score = sum(score)/len(score)
+    top_score = sum(score)
+    print(f"For PLayer: {player}, min score: {min_score}, max_score: {max_score}, avg score: {avg_score} & total score : {top_score}")
+
+    if top_score>highest_score:
+        highest_score = top_score
+        top_player = player
+print(f"Top Player: {top_player}, with top score: {highest_score}")
+```
+
+
