@@ -214,4 +214,71 @@ for player, score in score_list.items():
 print(f"Top Player: {top_player}, with top score: {highest_score}")
 ```
 
+### Dictionary in python
+
+```
+appl_revenues = {
+"USA": {
+"iPhone": 20,
+"iPad": 12,
+"MacBook": 8
+},
+"China": {
+"iPhone": 17,
+"iPad": 9,
+"MacBook": 6
+},
+"India": {
+"iPhone": 9,
+"iPad": 4,
+"MacBook": 2
+}
+}
+
+for country, product_data in appl_revenues.items():
+    for product, revenue in product_data.items():
+        print(f"{country}, {product} and Revenue: {revenue} in millions")
+
+```
+
+### Calander Function in Python
+```
+import calendar
+july = calendar.month(2025, 7)
+print(july)
+```
+
+### If the year leap year or not
+```
+leap = calendar.isleap(2025)
+print(leap)
+```
+
+### exercise problem 
+```
+customers = {}
+with open("E:\\customers.txt", "r") as f:
+    for line in f:
+        customer, amount = line.strip().split(",")
+        customers[customer] = int(amount)
+
+# Define reward processor
+def process_customer_data(customers):
+    updated_customers = {}
+    for customer, amount in customers.items():
+        if 100 <= amount <= 199:
+            reward = "Bronze"
+        elif 200 <= amount <= 499:
+            reward = "Silver"
+        elif amount >= 500:
+            reward = "Gold"
+        else:
+            reward = None
+        updated_customers[customer] = (amount, reward)
+    return updated_customers
+
+customers = process_customer_data(customers)
+print(customers)
+```
+
 
