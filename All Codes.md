@@ -280,5 +280,44 @@ def process_customer_data(customers):
 customers = process_customer_data(customers)
 print(customers)
 ```
+### Object oriented Programming (OOP)
+```
+import datetime
 
+class Cricket_player:
+    def __init__ (self, fname, lname, byear,team):
+        self.first_name = fname
+        self.last_name = lname
+        self.birth_year = byear
+        self.team = team
+        self.scores = []
+    
+    def add_scores (self, scores):
+        self.scores.append(scores)
+    
+    def avg_scores(self):
+        return sum(self.scores)/len(self.scores)
+    
+    def get_age (self):
+        now = datetime.datetime.now().year
+        return now - self.birth_year
+
+virat = Cricket_player("Virat", "Kohli", 1988, "India")
+virat.add_scores(57)
+virat.add_scores(78)
+virat.add_scores(127)
+
+
+print(virat.first_name)
+print(virat.last_name)
+print(virat.birth_year)
+print(virat.team)
+print(round(virat.avg_scores(),2))
+print(f"Virat's age is: {virat.get_age()}")
+
+Warner = Cricket_player("Devid", "Warner", 1989, "Australia")
+print(Warner.first_name)
+print(Warner.last_name)
+print(Warner.birth_year)
+```
 
