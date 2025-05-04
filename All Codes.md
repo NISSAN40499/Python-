@@ -301,12 +301,24 @@ class Cricket_player:
     def get_age (self):
         now = datetime.datetime.now().year
         return now - self.birth_year
+    
+    def __str__(self):
+        return (f"{self.first_name} {self.last_name} the cricket player from {self.team}") # print(virat) will triger this
+    
+    def __lt__(self, others):
+        self_avg_score = self.avg_scores()
+        others_avg_score = others.avg_scores()
+        return self_avg_score < others_avg_score 
+    
+    def __eq__(self, others):
+        self_age = self.get_age()
+        others_age = others.get_age()
+        return self_age == others_age
 
 virat = Cricket_player("Virat", "Kohli", 1988, "India")
 virat.add_scores(57)
 virat.add_scores(78)
 virat.add_scores(127)
-
 
 print(virat.first_name)
 print(virat.last_name)
@@ -314,10 +326,24 @@ print(virat.birth_year)
 print(virat.team)
 print(round(virat.avg_scores(),2))
 print(f"Virat's age is: {virat.get_age()}")
+print(virat) # convert virat into str and print the following from the class
 
 Warner = Cricket_player("Devid", "Warner", 1989, "Australia")
 print(Warner.first_name)
 print(Warner.last_name)
 print(Warner.birth_year)
+Warner.add_scores(56)
+Warner.add_scores(90)
+Warner.add_scores(41)
+
+print(Warner.avg_scores())
+print(Warner.get_age())
+
+##### Operator Overloading----------- __lt__ , __gt__ , __eq__ --------------------------------------------
+
+print(virat.avg_scores() < Warner.avg_scores())
+print(Warner<virat) # avg runs comparison
+print(Warner>virat) # avg runs comparison
+print(Warner == virat) # age comparison
 ```
 
